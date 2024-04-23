@@ -1,0 +1,19 @@
+input {
+    text-align: center;
+}
+
+.login {
+    display: flex;
+}
+.form {
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    width: 20%;
+    margin: 0 40% 0 40%;
+}
+
+.form-row {
+    margin-top: 10px;
+}
