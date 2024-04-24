@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User')
 
 
-router.post('/register', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
         const { username, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.post('login/', async (req, res) => {
+router.post('/login/', async (req, res) => {
     try {
         const { username, password } = req.body;
         const user = await User.findOne({ username });
