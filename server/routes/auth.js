@@ -1,8 +1,33 @@
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcrypt');
-const User = require('../models/User')
+import express from 'express';
+import bcrypt from 'bcrypt';
+import User from '../models/User.js';
 
+import db from '../db/connection.js'
+
+
+//May not need this here but will need when getting forumposts by id
+/*import { ObjectId} from 'mongodb';
+router.get("/:id", async (req, res) => {
+    let collection = await db.collection("records");
+    let query = { _id: new ObjectId(req.params.id) };
+    let result = await collection.findOne(query);
+  
+    if (!result) res.send("Not found").status(404);
+    else res.send(result).status(200);
+  });
+  router.patch("/:id", async (req, res) => {
+  try {
+    const query = { _id: new ObjectId(req.params.id) };
+    const updates = {
+      $set: {
+        name: req.body.name,
+        position: req.body.position,
+        level: req.body.level,
+      },
+    };
+    */
+
+const router = express.Router();
 
 router.post('/signup', async (req, res) => {
     try {
@@ -33,4 +58,4 @@ router.post('/login', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

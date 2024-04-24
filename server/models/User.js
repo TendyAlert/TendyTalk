@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
@@ -12,4 +12,4 @@ userSchema.path('password').validate(function(value) {
     return passwordRegex(value);
 },"Password must contain at least one uppercase and lowercase letter and number");
 
-module.exports = mongoose.model('User', userSchema);
+export default userSchema;

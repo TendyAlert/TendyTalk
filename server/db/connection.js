@@ -1,5 +1,7 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://tedma:1L1kech33se%21@tendytalk.ccbhle8.mongodb.net/?retryWrites=true&w=majority&appName=TendyTalk";
+import { MongoClient, ServerApiVersion } from "mongodb";
+
+console.log(process.env.ATLAS_URI);
+const uri = process.env.ATLAS_URI || "";
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -21,3 +23,7 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+let db = client.db("employees")
+
+export default db;
