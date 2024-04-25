@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Nav, Dropdown } from "react-bootstrap"
 import { NavLink } from "react-router-dom"
 import { List } from 'react-bootstrap-icons'
+import { AuthContext } from '../auth/AuthProvider'
 
 import "./nav.css"
 
 export default function Navbar() {
+    const { isLoggedIn } = useContext(AuthContext)
+
     const [ activeKey, setActiveKey ] = useState('/TendyTalk')
 
     const handleSelect = (selectedKey) => {
@@ -27,8 +30,11 @@ export default function Navbar() {
                     <Dropdown.Menu>
                         <Dropdown.Item href='/about'>About</Dropdown.Item>
                         <Dropdown.Item href='/contact'>Contact</Dropdown.Item>
-                        <Dropdown.Item href='/auth/login'>Log in</Dropdown.Item>
-                        <Dropdown.Item href='/auth/logout'>Log out</Dropdown.Item>
+                        {isLoggedIn ? (
+                            <Dropdown.Item href='/auth/logout'>Log out</Dropdown.Item>
+                        ) : (
+                            <Dropdown.Item href='/auth/login'>Log in</Dropdown.Item>
+                        )}
                     </Dropdown.Menu>
                 </Dropdown>
             </Nav.Item>
