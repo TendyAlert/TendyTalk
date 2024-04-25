@@ -31,8 +31,9 @@ export default function Signup() {
     }
 
   return (
-    <div className='singup' onSubmit={handleSignup}> 
-        <form action="POST">
+    <div>
+        <div className="empty-div"></div>
+        <form action="POST" onSubmit={handleSignup}>
             <legend>Sign Up</legend>
             <div className="row has-success">
                 <label htmlFor="username" class="col-sm-2 col-form-label">Username:</label>
@@ -46,8 +47,8 @@ export default function Signup() {
                 <label htmlFor="password" class="col-sm-2 col-form-label">Password:</label>
                 <input type="password" id='password' onChange={handleChange} required/>
             </div>
-            <div className="row">
-                <button type="submit" className='submit btn btn-outline-primary'>Submit</button>
+            <div className="row button-row">
+                <button type="submit" className='submit btn btn-outline-primary'>Sign Up</button>
             </div>
         </form>
     </div>
