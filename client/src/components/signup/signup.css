@@ -5,7 +5,7 @@ input {
 .login {
     display: flex;
 }
-.form {
+form {
     align-self: center;
     display: grid;
     grid-template-columns: 1fr;
@@ -16,4 +16,12 @@ input {
 
 .form-row {
     margin-top: 10px;
+}
+
+.submit {
+    padding: .5rem;
+}
+
+.btn:hover {
+    background-color: rgb(155, 208, 255);
 }

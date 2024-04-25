@@ -32,29 +32,22 @@ export default function Signup() {
 
   return (
     <div className='singup' onSubmit={handleSignup}> 
-        <form action="POST" className='form'>
-            <div className="form-row">
-                <label htmlFor="username">
-                    Username: <input type="text" id='username' name='username' onChange={handleChange} required/>
-                </label>
+        <form action="POST">
+            <legend>Sign Up</legend>
+            <div className="row has-success">
+                <label htmlFor="username" class="col-sm-2 col-form-label">Username:</label>
+                <input type="text" id='username' name='username' onChange={handleChange} required/>
             </div>
-            <div className="form-row">
-                <label htmlFor="email">
-                    Email(Optional): <input 
-                    type="email" 
-                    name="email" 
-                    id="email" 
-                    placeholder='email@email.com' 
-                    onChange={handleChange}/>
-                </label>
+            <div className="row">
+                <label htmlFor="email" class="col-sm-2 col-form-label">Email(Optional):</label>
+                <input type="email" name="email" id="email" placeholder='email@email.com' onChange={handleChange}/>
             </div>
-            <div className="form-row">
-                <label htmlFor="password">
-                    Password: <input type="password" id='password' onChange={handleChange} required/>
-                </label>
+            <div className="row has-success">
+                <label htmlFor="password" class="col-sm-2 col-form-label">Password:</label>
+                <input type="password" id='password' onChange={handleChange} required/>
             </div>
-            <div className="form-row">
-                <button type="submit">Submit</button>
+            <div className="row">
+                <button type="submit" className='submit btn btn-outline-primary'>Submit</button>
             </div>
         </form>
     </div>
