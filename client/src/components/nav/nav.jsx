@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { useSelector } from 'react-redux'
 import { Nav, Dropdown } from "react-bootstrap"
 import { NavLink } from "react-router-dom"
 import { List } from 'react-bootstrap-icons'
@@ -7,6 +8,7 @@ import { AuthContext } from '../auth/AuthProvider'
 import "./nav.css"
 
 export default function Navbar() {
+    const username = useSelector(state => state.auth.username)
     const { isLoggedIn } = useContext(AuthContext)
 
     const [ activeKey, setActiveKey ] = useState('/TendyTalk')
@@ -21,6 +23,7 @@ export default function Navbar() {
             <Nav.Link as={NavLink} to="/tendytalk" eventKey={"/tendytalk"} className='navbar-brand'>Tendy Talk</Nav.Link>
         </div>
         <div className="nav-container">
+            <p>{username}</p>
             <Nav.Item>
                 <Dropdown>
                     <Dropdown.Toggle variant='success' id='nav-dropdown' className='dropdown-toggle:after'>

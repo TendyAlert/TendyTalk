@@ -1,10 +1,7 @@
-input {
-    text-align: center;
-}
-
 .login {
     display: flex;
 }
+
 form {
     align-self: center;
     display: grid;

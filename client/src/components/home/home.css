@@ -1,0 +1,8 @@
+.home-container {
+    display: grid;
+}
+
+.new-post-btn {
+    width: 100px !important;
+    justify-self: end;
+}

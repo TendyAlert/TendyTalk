@@ -1,3 +1,7 @@
 .empty-div {
     margin-top: 10%;
 }
+div {
+    display: grid;
+    grid-template-columns: 1fr;
+}

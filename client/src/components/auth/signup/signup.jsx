@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 import './signup.css'
@@ -6,6 +7,7 @@ import './signup.css'
 
 
 export default function Signup() {
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -24,6 +26,7 @@ export default function Signup() {
         data.preventDefault();
         try{
             axios.post('/auth/signup', formData);
+            navigate('/auth/login')
         }
         catch (error) {
             console.error('Error', error);
@@ -36,15 +39,15 @@ export default function Signup() {
         <form action="POST" onSubmit={handleSignup}>
             <legend>Sign Up</legend>
             <div className="row has-success">
-                <label htmlFor="username" class="col-sm-2 col-form-label">Username:</label>
+                <label htmlFor="username" className="col-sm-2 col-form-label">Username:</label>
                 <input type="text" id='username' name='username' onChange={handleChange} required/>
             </div>
             <div className="row">
-                <label htmlFor="email" class="col-sm-2 col-form-label">Email(Optional):</label>
+                <label htmlFor="email" className="col-sm-2 col-form-label">Email(Optional):</label>
                 <input type="email" name="email" id="email" placeholder='email@email.com' onChange={handleChange}/>
             </div>
             <div className="row has-success">
-                <label htmlFor="password" class="col-sm-2 col-form-label">Password:</label>
+                <label htmlFor="password" className="col-sm-2 col-form-label">Password:</label>
                 <input type="password" id='password' onChange={handleChange} required/>
             </div>
             <div className="row button-row">

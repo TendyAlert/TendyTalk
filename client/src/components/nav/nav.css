@@ -5,7 +5,7 @@ body {
 .nav-bar {
     padding: 0 2% 0 2%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
 }
 
@@ -20,6 +20,15 @@ body {
 
 .nav-container {
     justify-self: end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.nav-container > p {
+    margin: 0;
+    padding-right: 5px;
+    color: black;
 }
 
 .dropdown-toggle:after {

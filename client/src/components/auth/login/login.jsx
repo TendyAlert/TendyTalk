@@ -1,13 +1,16 @@
 import React,{ useContext, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../AuthProvider'
+import { updateAuth } from '../../../actions/actionCreators'
 
 import './login.css'
 
 export default function Login() {
     const { login } = useContext(AuthContext)
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
         username: '',
@@ -26,7 +29,10 @@ export default function Login() {
         data.preventDefault();
         login()
         try{
-            axios.post('/auth/signup', formData);
+            dispatch(updateAuth({
+                username: formData.username
+            }))
+            //axios.post('/auth/signup', formData);
             navigate('/tendytalk')
         }
         catch (error) {
@@ -43,11 +49,11 @@ export default function Login() {
                 <p className="sign-up-link">Don't have an account? <a href="/auth/signup">Sign up</a></p>
             </div>
             <div className="row has-success">
-                <label htmlFor="username" class="col-sm-2 col-form-label">Username:</label>
+                <label htmlFor="username" className="col-sm-2 col-form-label">Username:</label>
                 <input type="text" id='username' name='username' onChange={handleChange} required/>
             </div>
             <div className="row has-success">
-                <label htmlFor="password" class="col-sm-2 col-form-label">Password:</label>
+                <label htmlFor="password" className="col-sm-2 col-form-label">Password:</label>
                 <input type="password" id='password' onChange={handleChange} required/>
             </div>
             <div className="row button-row">

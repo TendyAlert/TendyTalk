@@ -1,0 +1,16 @@
+.new-post {
+    width: 70%;
+    justify-self: center;
+}
+
+.new-post-form {
+    align-self: normal;
+    text-align: start;
+    width: 100%;
+    margin: 0;
+}
+
+.post-title-box {
+    padding: 8px 12px;
+    font-size: 18px;
+}
