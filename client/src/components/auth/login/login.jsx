@@ -5,6 +5,8 @@ import axios from 'axios'
 import { AuthContext } from '../AuthProvider'
 import { updateAuth } from '../../../actions/actionCreators'
 
+import ErrorAlert from '../../alerts/ErrorAlert'
+import { serverPath } from '../../../actions/actionConstants'
 import './login.css'
 
 export default function Login() {
@@ -16,6 +18,8 @@ export default function Login() {
         username: '',
         password: ''
     });
+
+    const [error, setError] = useState('')
 
     const handleChange = (data) => {
         const { name, value } = data.target;
@@ -29,20 +33,22 @@ export default function Login() {
         data.preventDefault();
         login()
         try{
-            await axios.post('/auth/login', formData);
+            await axios.post(serverPath + '/api/login', formData);
             dispatch(updateAuth({
                 username: formData.username
             }))
-            //navigate('/tendytalk')
+            navigate('/tendytalk')
         }
         catch (error) {
-            console.error('Error', error);
+            console.error('Error logging in', error);
+            setError("Unable to log in, check your username and password and try again")
         }
     }
 
   return (
     <div>
         <div className="empty-div"></div>
+        {error && <ErrorAlert message={error} />}
         <form onSubmit={ handleLogin }>
             <legend>Log in</legend>
             <div className="row">
@@ -54,7 +60,7 @@ export default function Login() {
             </div>
             <div className="row has-success">
                 <label htmlFor="password" className="col-sm-2 col-form-label">Password:</label>
-                <input type="password" id='password' onChange={handleChange} required/>
+                <input type="password" name='password' id='password' onChange={handleChange} required/>
             </div>
             <div className="row button-row">
                 <button type="submit" className='submit btn btn-outline-primary'>Login</button>

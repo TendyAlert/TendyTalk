@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
+
+import { serverPath } from '../../../actions/actionConstants';
 import './signup.css'
-
-
 
 export default function Signup() {
     const navigate = useNavigate()
@@ -25,7 +25,7 @@ export default function Signup() {
     const handleSignup = async (event) => {
         event.preventDefault();
         try{
-            await axios.post('/api/signup', formData);
+            await axios.post(serverPath + '/api/signup', formData);
             navigate('/auth/login')
         }
         catch (error) {

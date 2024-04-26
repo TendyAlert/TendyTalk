@@ -17,3 +17,19 @@ describe('POST /api/signup', () => {
     expect(response.body).toHaveProperty('message', 'User registered successfully');
   });
 });
+
+describe('POST /api/login',  () => {
+  test('Should sign the user in', async () => {
+    const user = {
+      username: 'testuser',
+      password: 'Password123'
+    };
+  
+    const response = await request(app)
+      .post('/api/login')
+      .send(user)
+  
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty('message', 'Login Succesful');
+  })
+})
