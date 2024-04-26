@@ -1,29 +1,52 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import { serverPath } from '../../actions/actionConstants';
+import { setPosts } from '../../actions/actionCreators';
 
 import './home.css'
 
+
+    
+
 export default function Home() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const posts = useSelector(state => state.posts.posts)
 
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const response = await axios.get(serverPath + '/api/posts');
+                const posts = response.data.posts;
+                dispatch(setPosts(posts));
+            } catch (error) {
+                console.error("Error fetching posts:", error)
+            }
+        }
+
+        fetchPosts()
+    }, [])
+    
     const handleNewPostClick = () => {
         navigate('/tendytalk/newpost')
     }
 
+
     const postList = posts.map(post => {
         try{
+            const postBody = post.body.replace(/\\/g, '');
             return (
-            <a href="#" className="list-group-item list-group-item-action flex-column align-items-start active" key={post.id}>
+            <a href={`/tendytalk/${post.id}`} className="list-group-item list-group-item-action flex-column align-items-start active" key={post.id}>
                 <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{ post.newPost[0] }</h5>
+                <h5 className="mb-1">{ post.title }</h5>
                 </div>
-                <p className="mb-1">{ post.newPost[1] }</p>
+                <p className="mb-1">{ postBody }</p>
             </a>
             )}
         catch {
-            console.log(post.newPost)
+            console.log(post.title)
         }
     })
 
@@ -43,3 +66,4 @@ export default function Home() {
     </div>
   )
 }
+

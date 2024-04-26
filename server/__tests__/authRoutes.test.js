@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../app'; // Import your Express app
+import app from './server/app'; // Import your Express app
 
 describe('POST /api/signup', () => {
   test('should create a new user', async () => {
