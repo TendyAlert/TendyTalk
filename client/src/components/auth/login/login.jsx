@@ -32,7 +32,7 @@ export default function Login() {
             dispatch(updateAuth({
                 username: formData.username
             }))
-            //axios.post('/auth/signup', formData);
+            axios.post('/api/login', formData);
             navigate('/tendytalk')
         }
         catch (error) {
@@ -43,7 +43,7 @@ export default function Login() {
   return (
     <div>
         <div className="empty-div"></div>
-        <form action="GET" onSubmit={ handleLogin }>
+        <form onSubmit={ handleLogin }>
             <legend>Log in</legend>
             <div className="row">
                 <p className="sign-up-link">Don't have an account? <a href="/auth/signup">Sign up</a></p>

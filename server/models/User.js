@@ -14,9 +14,11 @@ const userSchema = new mongoose.Schema({
             message: "Password must contain at least one uppercase and lowercase letter and a number"
         }},
     email: { type: String, lowercase: true }
+}, {
+    collection: "users_collection"
 });
 
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema, "users_collection");
 
 export default User;

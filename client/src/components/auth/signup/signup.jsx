@@ -22,21 +22,21 @@ export default function Signup() {
         }))
     }
 
-    const handleSignup = async (data) => {
-        data.preventDefault();
+    const handleSignup = async (event) => {
+        event.preventDefault();
         try{
-            axios.post('/api/signup', formData);
+            await axios.post('/api/signup', formData);
             navigate('/auth/login')
         }
         catch (error) {
-            console.error('Error', error);
+            console.error('Error from axios', error);
         }
     }
 
   return (
     <div>
         <div className="empty-div"></div>
-        <form action="POST" onSubmit={handleSignup}>
+        <form onSubmit={handleSignup}>
             <legend>Sign Up</legend>
             <div className="row has-success">
                 <label htmlFor="username" className="col-sm-2 col-form-label">Username:</label>

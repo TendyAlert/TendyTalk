@@ -11,16 +11,18 @@ const PORT = process.env.PORT || 3000
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:3000',
 }));
 
 app.use(express.json());
 
 app.use('/api', authRoutes)
 
-mongoose.connect(process.env.ATLAS_URI || '')
+mongoose.connect(process.env.ATLAS_URI || '', {
+    dbName: "TendyTalk"
+})
 .then(() => {
-    console.log("Connected to MongoDB at port 27017")
+    console.log("Connected to MongoDB")
     app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 })
 .catch ((error) => {
