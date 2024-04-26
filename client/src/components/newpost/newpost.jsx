@@ -1,9 +1,11 @@
 import React, { useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 import { addPost } from '../../actions/actionCreators';
 import './newpost.css'
+import { serverPath } from '../../actions/actionConstants';
 
 export default function NewPost() {
     const titleInput = useRef(null);
@@ -11,10 +13,10 @@ export default function NewPost() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const handleNewPost = (event) => {
+    const handleNewPost = async (event) => {
         event.preventDefault();
-
         dispatch(addPost([titleInput.current.value, bodyInput.current.value]))
+        await axios.post(serverPath + '/api/newpost', {title: titleInput.current.value, body: bodyInput.current.value})
         
         navigate('/tendytalk')
 

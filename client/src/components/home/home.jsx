@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 
 import './home.css'
@@ -14,10 +14,8 @@ export default function Home() {
 
     const postList = posts.map(post => {
         try{
-            console.log(posts)
-            console.log(post)
             return (
-            <a href="#" className="list-group-item list-group-item-action flex-column align-items-start active">
+            <a href="#" className="list-group-item list-group-item-action flex-column align-items-start active" key={post.id}>
                 <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{ post.newPost[0] }</h5>
                 </div>

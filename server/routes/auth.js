@@ -1,5 +1,5 @@
 import express from 'express';
-import bcrypt, { hash } from 'bcrypt';
+import bcrypt from 'bcrypt';
 import User from '../models/User.js';
 
 const saltRounds = 10;
@@ -30,22 +30,17 @@ const router = express.Router();
 
 router.post('/signup', async (req, res) => {
     try {
-        console.log("Getting request")
         const { username, password, email } = req.body;
-        console.log("Checking password")
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/
             if(!passwordRegex.test(password)) {
                 return res.status(400).json({ message: "Password must cotain a capital and lowcase letter and a number"})
             }
-        console.log("hashing password")
         const hashedPassword = await bcrypt.hash(password, saltRounds)
 
-        console.log("adding username and hashed password to userData")
         const userData = { username, password: hashedPassword };
         if (email) {
             userData.email = email
         }
-        console.log("Creating new user with user data")
         const user = new User(userData);
         try {
             await user.save();
