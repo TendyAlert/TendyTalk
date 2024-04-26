@@ -31,10 +31,15 @@ const router = express.Router();
 
 router.post('/signup', async (req, res) => {
     try {
-        const { username, password } = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({ username, password: hashedPassword });
+        const { username, password, email } = req.body;
+        const userData = { username, password };
+        if (email) {
+            userData.email = email
+        }
+
+        const user = new User(userData);
         await user.save();
+
         res.status(201).json({ message: 'User registered successfully' });
     }
     catch (error) {

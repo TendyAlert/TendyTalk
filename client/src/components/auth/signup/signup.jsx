@@ -25,7 +25,7 @@ export default function Signup() {
     const handleSignup = async (data) => {
         data.preventDefault();
         try{
-            axios.post('/auth/signup', formData);
+            axios.post('/api/signup', formData);
             navigate('/auth/login')
         }
         catch (error) {
@@ -48,7 +48,7 @@ export default function Signup() {
             </div>
             <div className="row has-success">
                 <label htmlFor="password" className="col-sm-2 col-form-label">Password:</label>
-                <input type="password" id='password' onChange={handleChange} required/>
+                <input type="password" name="password" id='password' onChange={handleChange} required/>
             </div>
             <div className="row button-row">
                 <button type="submit" className='submit btn btn-outline-primary'>Sign Up</button>

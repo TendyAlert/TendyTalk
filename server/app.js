@@ -3,6 +3,9 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import path from 'path';
 import authRoutes from './routes/auth.js';
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 const PORT = process.env.PORT || 3000
 const app = express();
@@ -13,11 +16,16 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use('/auth', authRoutes)
+app.use('/api', authRoutes)
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
-
-mongoose.connect('mongodb://localhost:27017/TendyTalk')
+mongoose.connect(process.env.ATLAS_URI || '')
 .then(() => {
     console.log("Connected to MongoDB at port 27017")
+    app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+})
+.catch ((error) => {
+    console.error("Error from app.js mongoose connection", error)
 });
+
+
+export default app;
