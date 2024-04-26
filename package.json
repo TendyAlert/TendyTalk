@@ -21,5 +21,8 @@
     "react-router-redux": "^4.0.8",
     "react-scripts": "^3.0.1",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

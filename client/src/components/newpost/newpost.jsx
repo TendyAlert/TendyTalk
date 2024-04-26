@@ -14,7 +14,6 @@ export default function NewPost() {
     const handleNewPost = (event) => {
         event.preventDefault();
 
-        console.log(titleInput.current.value, bodyInput.current.value)
         dispatch(addPost([titleInput.current.value, bodyInput.current.value]))
         
         navigate('/tendytalk')

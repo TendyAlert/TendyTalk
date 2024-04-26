@@ -29,11 +29,11 @@ export default function Login() {
         data.preventDefault();
         login()
         try{
+            await axios.post('/auth/login', formData);
             dispatch(updateAuth({
                 username: formData.username
             }))
-            axios.post('/api/login', formData);
-            navigate('/tendytalk')
+            //navigate('/tendytalk')
         }
         catch (error) {
             console.error('Error', error);
