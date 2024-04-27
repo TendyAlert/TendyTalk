@@ -29,9 +29,9 @@ app.get('/tendytalk/static/css/main.d58047a7.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build/static/css/main.d58047a7.css'))
 })
 
-app.get('/tendytalk/*', (req, res) => {
+/*app.get('/tendytalk/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-})
+})*/
 
 app.get('/favicon.ico', (req, res) => {
     res.status(204).end()
