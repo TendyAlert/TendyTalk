@@ -26,7 +26,7 @@ export default function Home() {
         }
 
         fetchPosts()
-    }, [])
+    }, [dispatch])
     
     const handleNewPostClick = () => {
         navigate('/tendytalk/newpost')

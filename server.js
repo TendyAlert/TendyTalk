@@ -14,10 +14,10 @@ app.get('/tendytalk/manifest.json', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build'))
 })
 
-app.get('/tendytalk/static/js/main.effb2cd8.js', (req, res) => {
-    res.setHeader('Content-Type', 'application/json')
+app.get('/tendytalk/static/js/main.2e48c3f3.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript')
 
-    res.sendFile(path.join(__dirname, 'client/build/static/js/main.effb2cd8.js'))
+    res.sendFile(path.join(__dirname, 'client/build/static/js/main.2e48c3f3.js'))
 })
 
 app.get('/tendytalk/static/css/main.d58047a7.css', (req, res) => {
@@ -50,7 +50,7 @@ app.get('/tendytalk/*', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect('mongodb+srv://tedma:1L1kech33se%21@tendytalk.ccbhle8.mongodb.net/?retryWrites=true&w=majority&appName=TendyTalk' || '', {
+mongoose.connect(process.env.ATLAS_URI || '', {
     dbName: 'TendyTalk'
 })
 .then(() => {
