@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-const authRoutes = require('./server/routes/auth.js');
-const postRoutes = require('./server/routes/posts.js');
+const authRoutesPromise = import ('./server/routes/auth.js');
+const postRoutesPromise = import ('./server/routes/posts.js');
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
@@ -15,8 +15,15 @@ app.get('/', (req, res) => {
     res.status(204).end()
 })
 
-app.use('/api', authRoutes)
-app.use('/api', postRoutes)
+authRoutesPromise.then(authRoutesModule => {
+    const authRoutes = authRoutesModule.default;
+    app.use('/api', authRoutes)
+})
+postRoutesPromise.then(postRoutesModule => {
+    const postRoutes = postRoutesModule.default;
+    app.use('/api', postRoutes)
+})
+
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))

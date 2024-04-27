@@ -5,7 +5,6 @@ import axios from 'axios'
 
 import { addPost } from '../../actions/actionCreators';
 import './newpost.css'
-import { serverPath } from '../../actions/actionConstants';
 
 export default function NewPost() {
     const titleInput = useRef(null);

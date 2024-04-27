@@ -6,7 +6,6 @@ import { AuthContext } from '../AuthProvider'
 import { updateAuth } from '../../../actions/actionCreators'
 
 import ErrorAlert from '../../alerts/ErrorAlert'
-import { serverPath } from '../../../actions/actionConstants'
 import './login.css'
 
 export default function Login() {

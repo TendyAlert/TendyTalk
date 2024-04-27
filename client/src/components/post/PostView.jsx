@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { serverPath } from '../../actions/actionConstants';
 import { setPosts, updateComments } from '../../actions/actionCreators';
 import { Modal } from 'react-bootstrap';
 

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 
-import { serverPath } from '../../../actions/actionConstants';
 import './signup.css'
 
 export default function Signup() {
