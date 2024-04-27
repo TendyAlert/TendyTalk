@@ -7,6 +7,15 @@ const postRoutes = require('server/routes/posts.js');
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
+app.get('/favicon.ico', (req, res) => {
+    res.status(204).end()
+})
+
+app.get('/', (req, res) => {
+    res.status(204).end()
+})
+
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
 })
