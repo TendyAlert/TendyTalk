@@ -30,6 +30,10 @@ app.get('/tendytalk/static/css/main.500ba0b4.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build/static/css/main.500ba0b4.css'))
 })
 
+app.get('/tendytalk', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+})
+
 app.get('/tendytalk/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 })
