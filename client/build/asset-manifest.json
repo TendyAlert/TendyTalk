@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/tendytalk/static/css/main.d58047a7.css",
-    "main.js": "/tendytalk/static/js/main.bce1afd2.js",
+    "main.js": "/tendytalk/static/js/main.b53766cc.js",
     "static/js/453.3a04e66d.chunk.js": "/tendytalk/static/js/453.3a04e66d.chunk.js",
     "index.html": "/tendytalk/index.html",
     "main.d58047a7.css.map": "/tendytalk/static/css/main.d58047a7.css.map",
-    "main.bce1afd2.js.map": "/tendytalk/static/js/main.bce1afd2.js.map",
+    "main.b53766cc.js.map": "/tendytalk/static/js/main.b53766cc.js.map",
     "453.3a04e66d.chunk.js.map": "/tendytalk/static/js/453.3a04e66d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d58047a7.css",
-    "static/js/main.bce1afd2.js"
+    "static/js/main.b53766cc.js"
   ]
 }

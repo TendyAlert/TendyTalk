@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
 
@@ -22,8 +22,9 @@ function App() {
             <Route path="/auth/login" Component={ Login } />
             <Route path='/auth/logout' Component={ Logout } />
             <Route path='/tendytalk/newpost' Component={ NewPost } />
-            <Route path='/tendytalk' Component={ Home } />
             <Route path='/tendytalk/:id' Component={ PostView } />
+            <Route path='/' element={ <Navigate to="/tendytalk" /> } />
+            <Route path='/tendytalk' Component={ Home } />
           </Routes>
         </Router>
     </div>
