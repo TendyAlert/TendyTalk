@@ -1,4 +1,7 @@
 {
+    "engines": {
+        "node": "20.x"
+    },
     "name": "tendytalk",
     "version": "0.5.0",
     "main": "server.js",
