@@ -26,7 +26,11 @@ app.get('/tendytalk/static/css/main.d58047a7.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build/static/css/main.d58047a7.css'))
 })
 
-app.get('/tendytalk/favicon.ico', (req, res) => {
+app.get('/tendytalk/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+})
+
+app.get('/favicon.ico', (req, res) => {
     res.status(204).end()
 })
 
@@ -43,10 +47,6 @@ postRoutesPromise.then(postRoutesModule => {
     app.use('/tendytalk/api', postRoutes)
 })
 
-
-app.get('/tendytalk/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-})
 
 const PORT = process.env.PORT || 5000;
 
