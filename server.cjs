@@ -30,7 +30,7 @@ app.get('/tendytalk/favicon.ico', (req, res) => {
     res.status(204).end()
 })
 
-app.get('/tendytalk/', (req, res) => {
+app.get('/', (req, res) => {
     res.status(204).end()
 })
 
