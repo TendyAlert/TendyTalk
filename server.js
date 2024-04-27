@@ -15,13 +15,12 @@ app.get('/', (req, res) => {
     res.status(204).end()
 })
 
+app.use('/api', authRoutes)
+app.use('/api', postRoutes)
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
 })
-
-app.use('/api', authRoutes)
-app.use('/api', postRoutes)
 
 
 const PORT = process.env.PORT || 5000;
