@@ -50,7 +50,7 @@ postRoutesPromise.then(postRoutesModule => {
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect("mongodb+srv://tedma:1L1kech33se%21@tendytalk.ccbhle8.mongodb.net/?retryWrites=true&w=majority&appName=TendyTalk" || '', {
+mongoose.connect(ATLAS_URI || '', {
     dbName: 'TendyTalk'
 })
 .then(() => {
