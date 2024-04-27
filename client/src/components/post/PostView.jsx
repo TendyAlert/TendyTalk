@@ -16,6 +16,12 @@ export default function PostView() {
   const [ commentList, setCommentList ] = useState([]);
   const [ showModal, setShowModal ] = useState(false);
 
+  const token = localStorage.getItem('token')
+    let username = ''
+    if (token) {
+        username = token.split(',')[0]
+    }
+
   const post = posts.find(post => post.id === id)
 
   useEffect(() => {
@@ -39,10 +45,11 @@ useEffect(() => {
 
 const handleOpen = () => setShowModal(true)
 const handleClose = () => setShowModal(false)
-const handleCommentSubmit = () => {
-  dispatch(updateComments(post, commentInput))
+const handleCommentSubmit = async () => {
+  await axios.post(serverPath + '/api/updatepost', {id: id, username: (username ? username : "Anonymous"), comment: commentInput})
+  dispatch(updateComments(post, {username: (username ? username : "Anonymous"), comment: commentInput}))
   setCommentInput('');
-  setCommentList([...commentList, commentInput])
+  setCommentList([...commentList, {username: (username ? username : "Anonymous"), comment: commentInput}])
   handleClose();
 }
   
@@ -54,11 +61,6 @@ const handleCommentSubmit = () => {
       </div>
     )
   }
-  const token = localStorage.getItem('token')
-    let username = ''
-    if (token) {
-        username = token.split(',')[0]
-    }
   const postBody = post.body.replace(/\\/g, '');
   return (
     <div>
@@ -73,7 +75,7 @@ const handleCommentSubmit = () => {
         <ul className='comments'>
             { commentList.length > 0 ? (
               commentList.map((comment, index) => (
-                <li key={index}><h5>{username}: </h5><p>{comment}</p></li>
+                <li key={index}><h5>{comment.username}: </h5><p>{comment.comment}</p></li>
               ))
             ) : (
               <li>No comments yet.</li>

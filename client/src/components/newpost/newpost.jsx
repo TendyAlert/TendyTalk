@@ -33,7 +33,7 @@ export default function NewPost() {
                 <input type="text" className='form-control post-title-box' id="title" ref={titleInput} />
             </div>
             <div className="row">
-                <textarea className='form-control' id="body" rows="3" ref={bodyInput} ></textarea>
+                <textarea className='form-control' id="body" rows="3" ref={bodyInput} required></textarea>
             </div>
             <div className="row">
                 <button type="submit" className='btn btn-outline-success'>Submit</button>

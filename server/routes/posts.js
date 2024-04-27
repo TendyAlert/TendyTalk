@@ -20,6 +20,20 @@ router.post('/newpost', async (req, res) => {
     }
 
 })
+router.post('/updatepost', async (req,res) => {
+    try {
+        const { id, username, comment } = req.body;
+        const post = await Post.findById(id);
+        if(!post) {
+            return res.status(404).json({error: "Post not found"})
+        }
+        post.comments.push({username: username, comment: comment});
+        await post.save();
+        res.status(200).json({message: "Comments updated successfully"})
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+})
 router.get('/posts', async (req, res) => {
     try{
         const posts = await Post.find();
