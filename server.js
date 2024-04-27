@@ -7,6 +7,18 @@ const postRoutesPromise = import ('./server/routes/posts.js');
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
+app.get('/tendytalk/manifest.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json')
+
+    res.sendFile(path.join(__dirname, 'client/build'))
+})
+
+app.get('/tendytalk/static/js/main.effb2cd8.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/json')
+
+    res.sendFile(path.join(__dirname, 'client/build/static/js/main.effb2cd8.js'))
+})
+
 app.get('/tendytalk/favicon.ico', (req, res) => {
     res.status(204).end()
 })
