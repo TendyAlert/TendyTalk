@@ -8,7 +8,10 @@ import "./nav.css"
 
 export default function Navbar() {
     const token = localStorage.getItem('token')
-    const username = token.split(',')[0]
+    let username = ''
+    if (token) {
+        username = token.split(',')[0]
+    }
     const { isLoggedIn } = useContext(AuthContext)
 
     const [ activeKey, setActiveKey ] = useState('/TendyTalk')
@@ -24,7 +27,7 @@ export default function Navbar() {
         </div>
         <div className="nav-container">
             <div className='username'>
-                <p>Hello, {username}</p>
+                {token && <p>Hello, {username}</p>}
             </div>
             <div>
                 <Nav.Item>

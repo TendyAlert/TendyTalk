@@ -13,8 +13,8 @@ export default function PostView() {
   const posts = useSelector(state => state.posts.posts)
   const { id } = useParams()
   const [ commentInput, setCommentInput ] = useState('');
+  const [ commentList, setCommentList ] = useState([]);
   const [ showModal, setShowModal ] = useState(false);
-  let commentList = [];
 
   const post = posts.find(post => post.id === id)
 
@@ -31,13 +31,18 @@ export default function PostView() {
 
     fetchPosts()
 }, [dispatch])
+useEffect(() => {
+  if (post){
+    setCommentList(post.comments)
+  }
+}, [post])
 
 const handleOpen = () => setShowModal(true)
 const handleClose = () => setShowModal(false)
 const handleCommentSubmit = () => {
   dispatch(updateComments(post, commentInput))
   setCommentInput('');
-
+  setCommentList([...commentList, commentInput])
   handleClose();
 }
   
@@ -49,15 +54,11 @@ const handleCommentSubmit = () => {
       </div>
     )
   }
-  const comments = post.comments;
-
-  commentList = comments.map(comment => {
-    console.log(commentList)
-    return (
-      <li>{comment}</li>
-    )
-  })
-  
+  const token = localStorage.getItem('token')
+    let username = ''
+    if (token) {
+        username = token.split(',')[0]
+    }
   const postBody = post.body.replace(/\\/g, '');
   return (
     <div>
@@ -69,17 +70,22 @@ const handleCommentSubmit = () => {
         <button type='button' className='btn comment btn-outline-success' onClick={handleOpen}>Comment</button>
       </div>
       <div className="empty-div"></div>
-        <ul>
-            { comments.map((comment, index) => {
-              <li key={ index }>{ comment }</li>
-            }) }
+        <ul className='comments'>
+            { commentList.length > 0 ? (
+              commentList.map((comment, index) => (
+                <li key={index}><h5>{username}: </h5><p>{comment}</p></li>
+              ))
+            ) : (
+              <li>No comments yet.</li>
+            )
+          }
         </ul>
         <Modal show={showModal} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Enter your comment</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <textarea name="comment" id="comment" rows="3"></textarea>
+            <textarea name="comment" id="comment" rows="3" value={commentInput} onChange={(e) => setCommentInput(e.target.value)}></textarea>
           </Modal.Body>
           <Modal.Footer>
               <button type="button" onClick={handleClose}>Close</button>
