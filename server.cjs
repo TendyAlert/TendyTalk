@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose')
 const app = express();
+const dotenv = require('dotenv')
+
+dotenv.config();
 
 const authRoutesPromise = import ('./server/routes/auth.js');
 const postRoutesPromise = import ('./server/routes/posts.js');
@@ -40,11 +43,11 @@ app.get('/', (req, res) => {
 
 authRoutesPromise.then(authRoutesModule => {
     const authRoutes = authRoutesModule.default;
-    app.use('/tendytalk/api', authRoutes)
+    app.use('/api', authRoutes)
 })
 postRoutesPromise.then(postRoutesModule => {
     const postRoutes = postRoutesModule.default;
-    app.use('/tendytalk/api', postRoutes)
+    app.use('/api', postRoutes)
 })
 
 
