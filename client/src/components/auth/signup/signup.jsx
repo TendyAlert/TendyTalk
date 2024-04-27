@@ -4,6 +4,7 @@ import axios from 'axios'
 
 
 import './signup.css'
+import ErrorAlert from '../../alerts/ErrorAlert';
 
 export default function Signup() {
     const navigate = useNavigate()
@@ -25,7 +26,7 @@ export default function Signup() {
         event.preventDefault();
         try{
             await axios.post('/api/signup', formData);
-            navigate('/auth/login')
+            navigate('/tendytalk/auth/login')
         }
         catch (error) {
             console.error('Error from axios', error);
@@ -35,6 +36,7 @@ export default function Signup() {
   return (
     <div>
         <div className="empty-div"></div>
+        <ErrorAlert message={error} />
         <form onSubmit={handleSignup}>
             <legend>Sign Up</legend>
             <div className="row has-success">

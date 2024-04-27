@@ -10,7 +10,7 @@ export default function Logout() {
         event.preventDefault();
         logout();
 
-        navigate('/auth/login')
+        navigate('/tendytalk/auth/login')
     }
 
   return (
