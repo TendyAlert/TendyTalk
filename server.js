@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-const authRoutes = require('server/routes/auth.js');
-const postRoutes = require('server/routes/posts.js');
+const authRoutes = require('./server/routes/auth.js');
+const postRoutes = require('./server/routes/posts.js');
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
