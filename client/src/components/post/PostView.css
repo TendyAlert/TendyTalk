@@ -1,0 +1,18 @@
+.post {
+    display: grid;
+    margin: 0 15%;
+    padding: 10px;
+    border: 2px solid;
+    box-shadow: 4px 4px 8px;
+}
+
+hr {
+    margin: 0 1rem 10px;
+    border: 1px double !important;
+}
+
+.comment {
+    width: 20%;
+    justify-self: end;
+}
+  

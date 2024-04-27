@@ -31,12 +31,14 @@ export default function Login() {
 
     const handleLogin = async (data) => {
         data.preventDefault();
-        login()
         try{
-            await axios.post(serverPath + '/api/login', formData);
+            const response = await axios.post(serverPath + '/api/login', formData);
+            const token = response.data.token
             dispatch(updateAuth({
                 username: formData.username
             }))
+
+            login(token)
             navigate('/tendytalk')
         }
         catch (error) {

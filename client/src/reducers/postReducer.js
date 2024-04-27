@@ -1,8 +1,7 @@
-import { SET_POSTS, ADD_POST, DELETE_POST, UPDATE_POST } from "../actions/actionConstants";
+import { SET_POSTS, ADD_POST, UPDATE_COMMENTS } from "../actions/actionConstants";
 
 const initialState = {
     posts: [],
-    id: 1
 }
 
 export default function postReducer (state = initialState, action) {
@@ -11,12 +10,10 @@ export default function postReducer (state = initialState, action) {
             const newPost = {
                 newPost: action.payload,
                 upvotes: 0,
-                id: state.id
             };
             return {
                 ...state,
                 posts: [...state.posts, newPost],
-                id: state.id + 1
             }
         case SET_POSTS:
             const payload = action.payload
@@ -39,8 +36,25 @@ export default function postReducer (state = initialState, action) {
             return {
                 ...state,
                 posts: [...state.posts, ...fileredPosts],
-                id: state.id +1
             }
+
+        case UPDATE_COMMENTS:
+            const { post, comment } = action;
+            const updatedPost = {
+                ...post,
+                comments: [...post.comments, comment]
+            }
+
+            const postIndex = state.posts.find(p => p.id === post.id);
+
+            const updatedState = [...state.posts];
+            updatedState[postIndex] = updatedPost;
+
+            return {
+                ...state,
+                posts: updatedState
+            }
+
         default:
             return state;
     }

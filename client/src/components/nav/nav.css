@@ -21,14 +21,20 @@ body {
 .nav-container {
     justify-self: end;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
 }
 
-.nav-container > p {
-    margin: 0;
-    padding-right: 5px;
+.username {
+    margin-right: 10px !important;
     color: black;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.username > p {
+    margin: 0;
 }
 
 .dropdown-toggle:after {

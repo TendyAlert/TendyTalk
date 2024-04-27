@@ -46,7 +46,7 @@ export default function Home() {
             </a>
             )}
         catch {
-            console.log(post.title)
+            return post.title
         }
     })
 
