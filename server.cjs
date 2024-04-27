@@ -18,10 +18,10 @@ app.get('/tendytalk/manifest.json', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build'))
 })
 
-app.get('/tendytalk/static/js/main.0be6c208.js', (req, res) => {
+app.get('/tendytalk/static/js/main.cd15957c.js', (req, res) => {
     res.setHeader('Content-Type', 'application/javascript')
 
-    res.sendFile(path.join(__dirname, 'client/build/static/js/main.0be6c208.js'))
+    res.sendFile(path.join(__dirname, 'client/build/static/js/main.cd15957c.js'))
 })
 
 app.get('/tendytalk/static/css/main.500ba0b4.css', (req, res) => {

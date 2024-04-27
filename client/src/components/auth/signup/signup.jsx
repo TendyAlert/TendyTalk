@@ -7,7 +7,7 @@ import './signup.css'
 import ErrorAlert from '../../alerts/ErrorAlert';
 
 export default function Signup() {
-    cosnt [error, setError] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
         username: '',
