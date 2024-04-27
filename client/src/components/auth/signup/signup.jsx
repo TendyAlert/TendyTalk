@@ -25,7 +25,7 @@ export default function Signup() {
     const handleSignup = async (event) => {
         event.preventDefault();
         try{
-            await axios.post(serverPath + '/api/signup', formData);
+            await axios.post('/api/signup', formData);
             navigate('/auth/login')
         }
         catch (error) {

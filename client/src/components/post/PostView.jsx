@@ -27,7 +27,7 @@ export default function PostView() {
   useEffect(() => {
     const fetchPosts = async () => {
         try {
-            const response = await axios.get(serverPath + '/api/posts');
+            const response = await axios.get('/api/posts');
             const posts = response.data.posts;
             dispatch(setPosts(posts));
         } catch (error) {
@@ -46,7 +46,7 @@ useEffect(() => {
 const handleOpen = () => setShowModal(true)
 const handleClose = () => setShowModal(false)
 const handleCommentSubmit = async () => {
-  await axios.post(serverPath + '/api/updatepost', {id: id, username: (username ? username : "Anonymous"), comment: commentInput})
+  await axios.post('/api/updatepost', {id: id, username: (username ? username : "Anonymous"), comment: commentInput})
   dispatch(updateComments(post, {username: (username ? username : "Anonymous"), comment: commentInput}))
   setCommentInput('');
   setCommentList([...commentList, {username: (username ? username : "Anonymous"), comment: commentInput}])

@@ -16,7 +16,7 @@ export default function NewPost() {
     const handleNewPost = async (event) => {
         event.preventDefault();
         dispatch(addPost([titleInput.current.value, bodyInput.current.value]))
-        await axios.post(serverPath + '/api/newpost', {title: titleInput.current.value, body: bodyInput.current.value})
+        await axios.post('/api/newpost', {title: titleInput.current.value, body: bodyInput.current.value})
         
         navigate('/tendytalk')
 

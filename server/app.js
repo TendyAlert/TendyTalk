@@ -9,10 +9,7 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 const PORT = process.env.PORT || 3000
-const staticPath = path.join(__dirname, '..', 'client', 'public')
 const app = express();
 
 app.use(cors({
@@ -20,8 +17,6 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
-app.use(express.static(staticPath))
 
 app.use('/api', authRoutes)
 app.use('/api', postRoutes)
