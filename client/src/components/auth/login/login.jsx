@@ -53,7 +53,7 @@ export default function Login() {
         <form onSubmit={ handleLogin }>
             <legend>Log in</legend>
             <div className="row">
-                <p className="sign-up-link">Don't have an account? <a href="/auth/signup">Sign up</a></p>
+                <p className="sign-up-link">Don't have an account? <a href="/tendytalk/auth/signup">Sign up</a></p>
             </div>
             <div className="row has-success">
                 <label htmlFor="username" className="col-sm-2 col-form-label">Username:</label>
