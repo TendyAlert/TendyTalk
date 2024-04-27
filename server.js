@@ -1,22 +1,10 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose')
 const app = express();
 
 const authRoutesPromise = import ('./server/routes/auth.js');
 const postRoutesPromise = import ('./server/routes/posts.js');
-
-const { connectToDatabase } = require('./server/app.js')
-
-connectToDatabase()
-    .then(() => {
-        const PORT = process.env.PORT || 5000;
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`)
-        });
-    })
-    .catch((error) => {
-        console.error('Failed to connect to database', error)
-    })
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
@@ -58,4 +46,20 @@ postRoutesPromise.then(postRoutesModule => {
 
 app.get('/tendytalk/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+})
+
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect(process.env.ATLAL_URI || '', {
+    dbName: 'TendyTalk'
+})
+.then(() => {
+    console.log("Connected to MogoDB Atlas")
+
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`)
+    })
+})
+.catch((error) => {
+    console.error("Error connecting to MongoDB", error)
 })
