@@ -1,7 +1,8 @@
 {
   "name": "tendytalk",
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

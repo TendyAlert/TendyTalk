@@ -37,12 +37,12 @@ export default function Navbar() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href='/about'>About</Dropdown.Item>
-                            <Dropdown.Item href='/contact'>Contact</Dropdown.Item>
+                            <Dropdown.Item href='#'>About (Under Construction)</Dropdown.Item>
+                            <Dropdown.Item href='#'>Contact (Under Construction)</Dropdown.Item>
                             {isLoggedIn ? (
-                                <Dropdown.Item href='/auth/logout'>Log out</Dropdown.Item>
+                                <Dropdown.Item href='/tendytalk/auth/logout'>Log out</Dropdown.Item>
                             ) : (
-                                <Dropdown.Item href='/auth/login'>Log in</Dropdown.Item>
+                                <Dropdown.Item href='/tendytalk/auth/login'>Log in</Dropdown.Item>
                             )}
                         </Dropdown.Menu>
                     </Dropdown>
