@@ -49,17 +49,18 @@ app.get('/tendytalk/*', (req, res) => {
 })
 
 const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`)
+})
 
-mongoose.connect(process.env.ATLAS_URI || '', {
+/*mongoose.connect("mongodb+srv://tedma:1L1kech33se%21@tendytalk.ccbhle8.mongodb.net/?retryWrites=true&w=majority&appName=TendyTalk" || '', {
     dbName: 'TendyTalk'
 })
 .then(() => {
     console.log("Connected to MogoDB Atlas")
 
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`)
-    })
+    
 })
 .catch((error) => {
     console.error("Error connecting to MongoDB", error)
-})
+})*/
