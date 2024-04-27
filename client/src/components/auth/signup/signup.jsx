@@ -7,6 +7,7 @@ import './signup.css'
 import ErrorAlert from '../../alerts/ErrorAlert';
 
 export default function Signup() {
+    cosnt [error, setError] = useState('');
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
         username: '',
@@ -30,13 +31,14 @@ export default function Signup() {
         }
         catch (error) {
             console.error('Error from axios', error);
+            setError('Error creating account, please make sure your password has a upperacse and lowecase letter, a number and a minimum of 8 characters');
         }
     }
 
   return (
     <div>
         <div className="empty-div"></div>
-        <ErrorAlert message={error} />
+        {error && <ErrorAlert message={error} />}
         <form onSubmit={handleSignup}>
             <legend>Sign Up</legend>
             <div className="row has-success">
