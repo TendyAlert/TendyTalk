@@ -50,7 +50,7 @@ app.get('/tendytalk/*', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.ATLAL_URI || '', {
+mongoose.connect('mongodb+srv://tedma:1L1kech33se%21@tendytalk.ccbhle8.mongodb.net/?retryWrites=true&w=majority&appName=TendyTalk' || '', {
     dbName: 'TendyTalk'
 })
 .then(() => {
