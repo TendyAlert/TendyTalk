@@ -19,6 +19,12 @@ app.get('/tendytalk/static/js/main.effb2cd8.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build/static/js/main.effb2cd8.js'))
 })
 
+app.get('/tendytalk/static/css/main.d58047a7.css', (req, res) => {
+    res.setHeader('Content-Type', 'text/css')
+
+    res.sendFile(path.join(__dirname, 'client/build/static/css/main.d58047a7.css'))
+})
+
 app.get('/tendytalk/favicon.ico', (req, res) => {
     res.status(204).end()
 })
